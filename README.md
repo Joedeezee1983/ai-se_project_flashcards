@@ -34,3 +34,5 @@ Add animations for card flips
 Add local storage to save progress
 
 Add keyboard navigation for accessibility
+
+Check out this website! https:joedeezee1983.github.io/ai-se_project_flashcards
