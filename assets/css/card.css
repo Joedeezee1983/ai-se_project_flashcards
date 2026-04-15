@@ -1,0 +1,98 @@
+/* ===========================
+     CARD BLOCK
+=========================== */
+
+.card {
+  width: 325px;
+  height: 200px;
+
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.card__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__count {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* ===========================
+   SHARED BUTTON BASE
+=========================== */
+
+.card__btn {
+  width: 24px;
+  height: 24px;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+
+  border: none;
+  cursor: pointer;
+
+  opacity: 50%;
+  z-index: 2;
+}
+
+.card__btn:hover {
+  opacity: 100%;
+}
+
+/* DELETE BUTTON */
+.card__btn_type_delete {
+  background-image: url("../images/delete.svg");
+}
+
+/* Make the card link cover the whole card so the card is clickable */
+.card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  text-decoration: none;
+}
+
+/* ===========================
+     CARD COLOR MODIFIERS
+=========================== */
+
+.card_color_green {
+  background-color: #64d583;
+}
+.card_color_blue {
+  background-color: #91a8f9;
+}
+.card_color_pink {
+  background-color: #ee92d7;
+}
+.card_color_purple {
+  background-color: #aa8ef0;
+}
+.card_color_orange {
+  background-color: #ee955e;
+}
+.card_color_yellow {
+  background-color: #f5d770;
+}

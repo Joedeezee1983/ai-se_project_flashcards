@@ -29,8 +29,8 @@ export function removeColorClasses(el) {
   });
 }
 
-export function deckColorModifierFromHex(hex) {
-  return `deck_color_${hexToString(hex)}`;
+export function cardColorModifierFromHex(hex) {
+  return `card_color_${hexToString(hex)}`;
 }
 
-export default { hexToString, removeColorClasses, deckColorModifierFromHex };
+export default { hexToString, removeColorClasses, cardColorModifierFromHex };

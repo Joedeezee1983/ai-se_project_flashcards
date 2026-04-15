@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flash Cards App</title>
 
-    <!-- Corrected CSS path -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
   </head>
 
   <body class="page">
@@ -15,7 +14,6 @@
 
       <nav class="nav">
         <ul class="nav__links">
-          <!-- Corrected nav links per project requirements -->
           <li><a class="nav__link" href="#home">Flash cards</a></li>
           <li><a class="nav__link" href="#home">My decks</a></li>
         </ul>
@@ -23,33 +21,82 @@
     </header>
 
     <main id="main" class="page__main-content">
-      <!-- Home Section -->
-      <section id="home">
-        <h2 class="decks__title">Your Decks</h2>
+      <!-- ===========================
+           HOME / GALLERY SECTION
+      ============================ -->
+      <section id="home" class="gallery">
+        <h2 class="gallery__title">Your Decks</h2>
 
-        <div class="decks__wrapping-row">
-          <button class="decks__new-deck-btn" type="button">+ New Deck</button>
+        <div class="gallery__wrapping-row">
+          <button class="gallery__new-card-btn" type="button">
+            + New Card
+          </button>
 
           <ul
             id="decksList"
-            class="decks__list decks__list_display-contents"
+            class="gallery__list gallery__list_display-contents"
           ></ul>
 
-          <!-- REQUIRED TEMPLATE (Fix for deckTemplate null error) -->
+          <!-- Deck Card Template -->
           <template id="deck-template">
-            <li class="deck deck_color_green">
-              <a class="deck__link" href="#"></a>
-              <h3 class="deck__title"></h3>
-              <div class="deck__row">
-                <p class="deck__count"></p>
-                <button class="deck__delete-btn" type="button"></button>
+            <li class="card card_color_green">
+              <a class="card__link" href="#"></a>
+              <h3 class="card__title"></h3>
+              <div class="card__row">
+                <p class="card__count"></p>
+                <button class="card__btn card__btn_type_delete"></button>
               </div>
             </li>
           </template>
         </div>
       </section>
 
-      <!-- Carousel Section -->
+      <!-- ===========================
+           DECK VIEW SECTION
+      ============================ -->
+      <section id="deck-view" class="gallery">
+        <div class="gallery__header-row">
+          <h2 class="gallery__title"></h2>
+
+          <button class="gallery__practice-btn" type="button">Practice</button>
+        </div>
+
+        <div class="gallery__wrapping-row">
+          <button class="gallery__new-card-btn" type="button">
+            + New Card
+          </button>
+
+          <ul
+            id="cardsList"
+            class="gallery__list gallery__list_display-contents"
+          ></ul>
+
+          <!-- Flashcard Template -->
+          <template id="card-template">
+            <li class="card card_color_green">
+              <h3 class="card__title"></h3>
+              <div class="card__row">
+                <button
+                  type="button"
+                  class="card__action-btn"
+                  aria-label="Show answer"
+                >
+                  Show answer
+                </button>
+                <button
+                  type="button"
+                  class="card__btn card__btn_type_delete"
+                  aria-label="Delete card"
+                ></button>
+              </div>
+            </li>
+          </template>
+        </div>
+      </section>
+
+      <!-- ===========================
+           CAROUSEL SECTION
+      ============================ -->
       <section id="carousel" class="carousel">
         <h2 class="carousel__title"></h2>
 
@@ -79,7 +126,9 @@
         ></button>
       </section>
 
-      <!-- 404 Not Found -->
+      <!-- ===========================
+           404 SECTION
+      ============================ -->
       <section id="notfound" class="notfound">
         <h2>404 — Not Found</h2>
         <p>The page you requested could not be found.</p>
@@ -90,7 +139,6 @@
       <p class="footer__text">&copy; 2026 Flash Cards App</p>
     </footer>
 
-    <!-- Corrected script path -->
     <script type="module" src="./assets/js/index.js"></script>
   </body>
 </html>

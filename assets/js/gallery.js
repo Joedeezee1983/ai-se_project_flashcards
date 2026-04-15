@@ -1,9 +1,9 @@
-// decks.js
-// Minimal decks data and helper for the project.
+// gallery.js
+// Minimal gallery data and helper for the project (renamed from decks.js).
 
-export const decks = [
+export const gallery = [
   {
-    id: "deck-1",
+    id: "card-1",
     name: "Biology Basics",
     color: "#6ab04c",
     cards: [
@@ -15,7 +15,7 @@ export const decks = [
     ],
   },
   {
-    id: "deck-2",
+    id: "card-2",
     name: "JavaScript",
     color: "#2f80ed",
     cards: [
@@ -34,7 +34,7 @@ export const decks = [
     ],
   },
   {
-    id: "deck-3",
+    id: "card-3",
     name: "CSS Selectors",
     color: "#ff5b8a",
     cards: [
@@ -44,8 +44,8 @@ export const decks = [
   },
 ];
 
-export function getDeckByID(id) {
-  return decks.find((d) => d.id === id) || null;
+export function getGalleryByID(id) {
+  return gallery.find((d) => d.id === id) || null;
 }
 
-export default decks;
+export default gallery;
