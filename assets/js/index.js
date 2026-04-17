@@ -8,6 +8,7 @@ import {
 import { gallery, getGalleryByID } from "./gallery.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
+import { openModal } from "./modal.js";
 
 // ===============================
 // SELECTORS (UPDATED TO MATCH HTML)
@@ -48,11 +49,15 @@ function createDeckCardEl(deckData) {
   // Link to deck-view
   if (link) link.href = `#gallery/${deckData.id}`;
 
-  // Delete button
-  deleteBtn.addEventListener("click", (e) => {
+  // Delete button — confirm then remove from DOM and gallery array
+  deleteBtn.addEventListener("click", async (e) => {
     e.stopPropagation();
+    const confirmed = await openModal();
+    if (!confirmed) return;
     const li = deleteBtn.closest(".card");
     if (li && li.parentNode) li.parentNode.removeChild(li);
+    const idx = gallery.findIndex((d) => d.id === deckData.id);
+    if (idx !== -1) gallery.splice(idx, 1);
   });
 
   return clone;
@@ -60,7 +65,7 @@ function createDeckCardEl(deckData) {
 
 function renderDeckCard(deckData) {
   const el = createDeckCardEl(deckData);
-  if (el && decksList) decksList.prepend(el);
+  if (el && decksList) decksList.append(el);
 }
 
 // ===============================
@@ -135,6 +140,7 @@ function handleHashChange() {
 
   // HOME
   if (!hash || hash === "home") {
+    currentDeck = null;
     home.style.display = "block";
     return;
   }

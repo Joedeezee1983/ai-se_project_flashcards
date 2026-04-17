@@ -1,13 +1,13 @@
 import { hexToString, removeColorClasses } from "./colors.js";
 
-let currentIndex = 0;
-let showingQuestion = true;
-
-function getCarouselTitle(cardGroup) {
-  return `${cardGroup.name} · ${currentIndex + 1}/${cardGroup.cards.length}`;
-}
-
 export function renderCarouselView(cardGroup) {
+  let currentIndex = 0;
+  let showingQuestion = true;
+
+  function getCarouselTitle() {
+    return `${cardGroup.name} · ${currentIndex + 1}/${cardGroup.cards.length}`;
+  }
+
   const carousel = document.getElementById("carousel");
   if (!carousel) return;
 
@@ -19,15 +19,11 @@ export function renderCarouselView(cardGroup) {
   let rightBtn = carousel.querySelector(".carousel__btn_type_right");
   let flipBtn = carousel.querySelector(".carousel__btn_type_flip");
 
-  // Reset state
-  currentIndex = 0;
-  showingQuestion = true;
-
   // -----------------------------
   // INTERNAL UPDATE FUNCTIONS
   // -----------------------------
   function updateTitle() {
-    if (titleEl) titleEl.textContent = getCarouselTitle(cardGroup);
+    if (titleEl) titleEl.textContent = getCarouselTitle();
   }
 
   function updateColor() {
@@ -118,5 +114,3 @@ export function renderCarouselView(cardGroup) {
   // -----------------------------
   updateDisplay();
 }
-
-export default { renderCarouselView };

@@ -47,5 +47,4 @@ export const gallery = [
 export function getGalleryByID(id) {
   return gallery.find((d) => d.id === id) || null;
 }
-
 export default gallery;

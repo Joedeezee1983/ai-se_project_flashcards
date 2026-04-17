@@ -1,0 +1,75 @@
+/* ===========================
+   CONFIRMATION MODAL
+=========================== */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+}
+
+.modal_open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__content {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 32px 28px;
+  max-width: 360px;
+  width: calc(100% - 40px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modal__message {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.modal__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.modal__btn {
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.modal__btn_type_confirm {
+  background-color: #e53935;
+  color: #ffffff;
+}
+
+.modal__btn_type_confirm:hover {
+  opacity: 0.9;
+}
+
+.modal__btn_type_cancel {
+  background-color: #f0f0f0;
+  color: #1a1a1a;
+}
+
+.modal__btn_type_cancel:hover {
+  opacity: 0.8;
+}

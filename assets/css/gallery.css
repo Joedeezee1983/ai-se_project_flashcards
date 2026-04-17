@@ -43,6 +43,7 @@
 .gallery__list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  justify-content: center;
   gap: 24px;
   padding: 0;
   margin: 0;
@@ -67,6 +68,14 @@
 
 .gallery__new-card-btn:hover {
   opacity: 0.9;
+}
+
+.gallery__new-card-btn_clicked {
+  opacity: 0.6;
+  transform: scale(0.97);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
 }
 
 /* ===========================

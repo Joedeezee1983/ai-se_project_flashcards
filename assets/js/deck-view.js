@@ -1,20 +1,8 @@
 // deck-view.js
 // Responsible for rendering the deck (card group) view and its flashcards.
 
-import { hexToString } from "./colors.js";
-
-// Helper: remove all color classes
-function removeColorClasses(el) {
-  el.classList.remove(
-    "card_color_green",
-    "card_color_blue",
-    "card_color_pink",
-    "card_color_purple",
-    "card_color_orange",
-    "card_color_yellow",
-    "card_color_white",
-  );
-}
+import { hexToString, removeColorClasses } from "./colors.js";
+import { openModal } from "./modal.js";
 
 export function createFlashcardEl(flashcardData, deckColorName) {
   const cardTemplate = document.getElementById("card-template");
@@ -64,8 +52,10 @@ export function createFlashcardEl(flashcardData, deckColorName) {
 
   // Delete button
   if (deleteBtn) {
-    deleteBtn.addEventListener("click", (e) => {
+    deleteBtn.addEventListener("click", async (e) => {
       e.stopPropagation();
+      const confirmed = await openModal();
+      if (!confirmed) return;
       const li = deleteBtn.closest(".card");
       if (li && li.parentNode) li.parentNode.removeChild(li);
     });
@@ -89,8 +79,6 @@ export function renderDeckView(deck) {
 
   deck.cards.forEach((card) => {
     const el = createFlashcardEl(card, deckColorName);
-    if (el) cardsList.prepend(el);
+    if (el) cardsList.append(el);
   });
 }
-
-export default { createFlashcardEl, renderDeckView };

@@ -37,8 +37,6 @@
   justify-content: center;
   align-items: center;
 
-  margin-bottom: 24px;
-
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -105,9 +103,6 @@
 }
 .carousel__btn_type_flip {
   background-image: url("../images/flip.svg");
-}
-.card__btn_type_delete {
-  background-image: url("../images/delete.svg");
 }
 
 /* ===========================
