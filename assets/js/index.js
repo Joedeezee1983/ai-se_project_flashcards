@@ -123,7 +123,7 @@ function handleHashChange() {
   const home = document.getElementById("home");
   const deckView = document.getElementById("deck-view");
   const carousel = document.getElementById("carousel");
-  const notfound = document.getElementById("notfound");
+  const notfound = document.getElementById("not-found");
   const mainEl = document.getElementById("main");
 
   // Hide everything by default

@@ -51,16 +51,17 @@
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Part 5 Task 6 */
   border-radius: 50%;
+  z-index: 2; /* Above link overlay */
 }
 
 /* Delete button */
 .card__btn_type_delete {
-  background-image: url("../images/delete-icon.svg");
+  background-image: url("../images/delete.svg");
 }
 
 /* Flip button (icon-only, required by reviewer) */
 .card__btn_type_flip {
-  background-image: url("../images/flip-icon.svg");
+  background-image: url("../images/flip.svg");
 }
 
 /* ===========================
@@ -75,25 +76,31 @@
 
 /* ===========================
       COLOR MODIFIERS
+      (Matches colors.js EXACTLY)
 =========================== */
 
 .card_color_green {
-  background-color: #c8e6c9;
+  background-color: #64d583;
 }
+
 .card_color_blue {
-  background-color: #bbdefb;
+  background-color: #91a8f9;
 }
+
 .card_color_pink {
-  background-color: #f8bbd0;
+  background-color: #ee92d7;
 }
+
 .card_color_purple {
-  background-color: #e1bee7;
+  background-color: #aa8ef0;
 }
+
 .card_color_orange {
-  background-color: #ffe0b2;
+  background-color: #ee955e;
 }
+
 .card_color_yellow {
-  background-color: #fff9c4;
+  background-color: #f5d770;
 }
 
 /* Required for flip-to-answer */

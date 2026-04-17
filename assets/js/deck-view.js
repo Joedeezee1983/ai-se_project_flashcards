@@ -1,7 +1,7 @@
 // deck-view.js
 // Responsible for rendering the deck (card group) view and its flashcards.
 
-import { hexToString } from "./utils.js"; // if you already have this helper
+import { hexToString } from "./colors.js";
 
 // Helper: remove all color classes
 function removeColorClasses(el) {
