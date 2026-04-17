@@ -3,6 +3,7 @@
 =========================== */
 
 .card {
+  position: relative;
   background-color: #ffffff;
   border-radius: 20px;
   padding: 20px;
@@ -19,17 +20,32 @@
   margin: 0 0 12px 0;
   font-weight: 700;
   font-size: 20px;
+  pointer-events: none;
 }
 
 .card__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  pointer-events: none;
+}
+
+/* ===========================
+      LINK OVERLAY
+=========================== */
+
+.card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 2; /* ← bump above content */
+  display: block;
+  pointer-events: auto;
 }
 
 .card__count {
   font-size: 16px;
   opacity: 0.8;
+  pointer-events: none;
 }
 
 /* ===========================
@@ -45,6 +61,8 @@
   background-repeat: no-repeat;
   background-color: transparent;
   cursor: pointer;
+  pointer-events: auto; /* keep delete button clickable */
+  z-index: 3; /* ensure it sits above the overlay */
 }
 
 .card__btn_type_delete {
