@@ -1,12 +1,34 @@
 /* ===========================
+   CAROUSEL BLOCK
+=========================== */
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.carousel__title {
+  margin: 0;
+  font-weight: 900;
+  font-size: 24px;
+}
+
+.carousel__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===========================
    CARD
 =========================== */
 
 .carousel__card {
   width: 100%;
-  max-width: 440px; /* optional, prevents it from getting too large on desktop */
-  aspect-ratio: 65 / 41; /* Required for Part 5 responsive design */
-  background-color: #fff;
+  max-width: 440px;
+  aspect-ratio: 65 / 41;
+  background-color: #ffffff;
   border-radius: 20px;
   padding: 20px;
   box-sizing: border-box;
@@ -17,7 +39,7 @@
 
   margin-bottom: 24px;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Part 5 Task 6 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .carousel__card-text {
@@ -28,7 +50,7 @@
 }
 
 /* ===========================
-   CARD COLOR MODIFIERS
+   COLOR MODIFIERS
 =========================== */
 
 .carousel__card_color_green {
@@ -49,8 +71,6 @@
 .carousel__card_color_yellow {
   background-color: #f5d770;
 }
-
-/* Answer side (white) */
 .carousel__card_color_white {
   background-color: #ffffff;
 }
@@ -70,5 +90,31 @@
   cursor: pointer;
   border-radius: 50%;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Part 5 Task 6 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================
+   BUTTON TYPES (ICONS)
+=========================== */
+
+.carousel__btn_type_left {
+  background-image: url("../images/left.svg");
+}
+.carousel__btn_type_right {
+  background-image: url("../images/right.svg");
+}
+.carousel__btn_type_flip {
+  background-image: url("../images/flip.svg");
+}
+.card__btn_type_delete {
+  background-image: url("../images/delete.svg");
+}
+
+/* ===========================
+   DISABLED STATE
+=========================== */
+
+.carousel__btn_disabled {
+  opacity: 0.3;
+  pointer-events: none;
 }

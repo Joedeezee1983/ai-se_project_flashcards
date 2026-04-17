@@ -1,109 +1,79 @@
 /* ===========================
-      CARD BLOCK
+   CARD BLOCK
 =========================== */
 
 .card {
-  width: 100%;
-  aspect-ratio: 65 / 41; /* Required for Part 5 responsive design */
-  border-radius: 12px;
+  background-color: #ffffff;
+  border-radius: 20px;
   padding: 20px;
-  position: relative;
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Part 5 Task 6 */
-  overflow: hidden;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Title */
 .card__title {
+  margin: 0 0 12px 0;
+  font-weight: 700;
   font-size: 20px;
-  font-weight: 600;
-  margin: 0;
 }
 
-/* Row for count + delete button */
 .card__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Count text */
 .card__count {
   font-size: 16px;
   opacity: 0.8;
 }
 
 /* ===========================
-      BUTTON SYSTEM
+   BUTTONS
 =========================== */
 
-/* Base button (Part 4 refactor requirement) */
 .card__btn {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border: none;
-  background-size: 24px;
+  background-size: 20px;
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Part 5 Task 6 */
-  border-radius: 50%;
-  z-index: 2; /* Above link overlay */
 }
 
-/* Delete button */
 .card__btn_type_delete {
   background-image: url("../images/delete.svg");
 }
 
-/* Flip button (icon-only, required by reviewer) */
 .card__btn_type_flip {
   background-image: url("../images/flip.svg");
 }
 
 /* ===========================
-      LINK OVERLAY
-=========================== */
-
-.card__link {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-/* ===========================
-      COLOR MODIFIERS
-      (Matches colors.js EXACTLY)
+   COLOR MODIFIERS
 =========================== */
 
 .card_color_green {
   background-color: #64d583;
 }
-
 .card_color_blue {
   background-color: #91a8f9;
 }
-
 .card_color_pink {
   background-color: #ee92d7;
 }
-
 .card_color_purple {
   background-color: #aa8ef0;
 }
-
 .card_color_orange {
   background-color: #ee955e;
 }
-
 .card_color_yellow {
   background-color: #f5d770;
-}
-
-/* Required for flip-to-answer */
-.card_color_white {
-  background-color: #ffffff;
 }

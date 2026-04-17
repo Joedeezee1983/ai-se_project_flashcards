@@ -1,90 +1,122 @@
 /* ===========================
-      GALLERY (HOME VIEW)
+   GALLERY BLOCK
 =========================== */
 
-/* Page title */
+.gallery {
+  display: block;
+}
+
 .gallery__title {
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 0 24px;
-}
-
-/* Container for the deck list */
-.gallery__list {
-  list-style: none;
-  padding: 0;
   margin: 0;
-
-  /* Responsive grid layout */
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
-}
-
-/* Each deck card wrapper */
-.gallery__item {
-  position: relative;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: -0.24px;
 }
 
 /* ===========================
-      NEW DECK BUTTON
+   WRAPPER ROW
+   (+ New Deck / + New Card + list)
+=========================== */
+
+.gallery__wrapping-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* spacing between button and list */
+}
+
+/* ===========================
+   HEADER ROW (Deck View)
+   (Title + Practice button)
+=========================== */
+
+.gallery__header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* ===========================
+   LIST (Grid Layout)
+=========================== */
+
+.gallery__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* ===========================
+   NEW DECK / NEW CARD BUTTON
 =========================== */
 
 .gallery__new-card-btn {
   width: 100%;
-  aspect-ratio: 65 / 41;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
   border-radius: 12px;
-  border: 2px dashed #ccc;
-  background-color: #fafafa;
-  font-size: 20px;
-  font-weight: 600;
-  color: #666;
+  background-color: #1a1a1a;
+  color: #ffffff;
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
 }
 
 .gallery__new-card-btn:hover {
-  background-color: #f0f0f0;
-  border-color: #999;
-}
-
-.gallery__new-card-btn_clicked {
-  transform: scale(0.97);
-  transition: transform 0.1s ease;
+  opacity: 0.9;
 }
 
 /* ===========================
-      PRACTICE BUTTON
+   PRACTICE BUTTON (Deck View)
 =========================== */
 
 .gallery__practice-btn {
-  margin-top: 32px;
-  padding: 14px 24px;
-  font-size: 18px;
+  padding: 12px 20px;
+  font-size: 16px;
   font-weight: 600;
-
-  background-color: #4a90e2;
-  color: white;
   border: none;
-  border-radius: 8px;
-
+  border-radius: 12px;
+  background-color: #1a1a1a;
+  color: #ffffff;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 .gallery__practice-btn:hover {
-  background-color: #3a78c2;
+  opacity: 0.9;
 }
 
-/* Disabled state */
-.gallery__practice-btn:disabled {
-  background-color: #b5c7e0;
-  cursor: not-allowed;
+/* ===========================
+   MOBILE BOTTOM BAR (Part 5)
+=========================== */
+
+@media screen and (max-width: 480px) {
+  .gallery__new-card-btn,
+  .gallery__practice-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    z-index: 9999;
+  }
+
+  .gallery__wrapping-row,
+  .gallery__header-row {
+    padding-bottom: 120px; /* prevent overlap */
+  }
+
+  .footer {
+    display: none; /* matches Figma */
+  }
+
+  .page_no-mobile-bar .gallery__new-card-btn,
+  .page_no-mobile-bar .gallery__practice-btn {
+    position: static;
+    width: 100%;
+    margin: 0;
+  }
 }
