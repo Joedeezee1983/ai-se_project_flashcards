@@ -14,8 +14,8 @@
 
       <nav class="nav">
         <ul class="nav__links">
-          <li><a class="nav__link" href="#home">Flash cards</a></li>
-          <li><a class="nav__link" href="#home">My decks</a></li>
+          <li><a class="nav__link" href="#home">Home</a></li>
+          <li><a class="nav__link" href="#home">My Decks</a></li>
         </ul>
       </nav>
     </header>
@@ -28,26 +28,15 @@
         <h2 class="gallery__title">Your Decks</h2>
 
         <div class="gallery__wrapping-row">
+          <!-- FIXED: + New Deck -->
           <button class="gallery__new-card-btn" type="button">
-            + New Card
+            + New Deck
           </button>
 
           <ul
             id="decksList"
             class="gallery__list gallery__list_display-contents"
           ></ul>
-
-          <!-- Deck Card Template -->
-          <template id="deck-template">
-            <li class="card card_color_green">
-              <a class="card__link" href="#"></a>
-              <h3 class="card__title"></h3>
-              <div class="card__row">
-                <p class="card__count"></p>
-                <button class="card__btn card__btn_type_delete"></button>
-              </div>
-            </li>
-          </template>
         </div>
       </section>
 
@@ -62,6 +51,7 @@
         </div>
 
         <div class="gallery__wrapping-row">
+          <!-- This one stays + New Card -->
           <button class="gallery__new-card-btn" type="button">
             + New Card
           </button>
@@ -70,27 +60,6 @@
             id="cardsList"
             class="gallery__list gallery__list_display-contents"
           ></ul>
-
-          <!-- Flashcard Template -->
-          <template id="card-template">
-            <li class="card card_color_green">
-              <h3 class="card__title"></h3>
-              <div class="card__row">
-                <button
-                  type="button"
-                  class="card__action-btn"
-                  aria-label="Show answer"
-                >
-                  Show answer
-                </button>
-                <button
-                  type="button"
-                  class="card__btn card__btn_type_delete"
-                  aria-label="Delete card"
-                ></button>
-              </div>
-            </li>
-          </template>
         </div>
       </section>
 
@@ -129,7 +98,8 @@
       <!-- ===========================
            404 SECTION
       ============================ -->
-      <section id="notfound" class="notfound">
+      <!-- FIXED: BEM block renamed to not-found -->
+      <section id="not-found" class="not-found">
         <h2>404 — Not Found</h2>
         <p>The page you requested could not be found.</p>
       </section>
@@ -138,6 +108,46 @@
     <footer class="footer">
       <p class="footer__text">&copy; 2026 Flash Cards App</p>
     </footer>
+
+    <!-- ===========================
+         TEMPLATES MOVED TO END
+    ============================ -->
+
+    <!-- Deck Card Template -->
+    <template id="deck-template">
+      <li class="card">
+        <a class="card__link" href="#"></a>
+        <h3 class="card__title"></h3>
+        <div class="card__row">
+          <p class="card__count"></p>
+          <button
+            class="card__btn card__btn_type_delete"
+            aria-label="Delete deck"
+          ></button>
+        </div>
+      </li>
+    </template>
+
+    <!-- Flashcard Template -->
+    <template id="card-template">
+      <li class="card">
+        <h3 class="card__title"></h3>
+        <div class="card__row">
+          <!-- FIXED: required flip button -->
+          <button
+            type="button"
+            class="card__btn card__btn_type_flip"
+            aria-label="Flip card"
+          ></button>
+
+          <button
+            type="button"
+            class="card__btn card__btn_type_delete"
+            aria-label="Delete card"
+          ></button>
+        </div>
+      </li>
+    </template>
 
     <script type="module" src="./assets/js/index.js"></script>
   </body>

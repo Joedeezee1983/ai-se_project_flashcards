@@ -31,7 +31,10 @@
   background-color: #c5c5c5;
 }
 
-/* FLEX WRAPPER FOR GALLERY + BUTTON */
+/* ===========================
+     WRAPPING ROW
+=========================== */
+
 .gallery__wrapping-row {
   display: flex;
   flex-wrap: wrap;
@@ -45,10 +48,19 @@
   display: contents;
 }
 
-/* NEW GALLERY BUTTON */
+.gallery__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ===========================
+     NEW DECK / NEW CARD BUTTON
+=========================== */
+
 .gallery__new-card-btn {
-  width: 325px;
-  height: 205px;
+  width: 100%;
+  aspect-ratio: 65 / 41; /* Required for Part 5 responsive design */
   padding: 20px;
 
   font-weight: 700;
@@ -63,12 +75,14 @@
   cursor: pointer;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
   position: relative;
   z-index: 9999;
   pointer-events: auto;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Part 5 Task 6 */
 }
 
 .gallery__new-card-btn:hover {
@@ -78,10 +92,4 @@
 
 .gallery__new-card-btn_clicked {
   transform: scale(0.98);
-}
-
-.gallery__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }

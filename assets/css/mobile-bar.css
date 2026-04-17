@@ -1,0 +1,47 @@
+/* ===========================
+     MOBILE BOTTOM BAR
+     (Part 5 requirement)
+=========================== */
+
+@media screen and (max-width: 480px) {
+  /* Fix the new deck/card button to the bottom */
+  .gallery__new-card-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    z-index: 9999;
+  }
+
+  /* Fix the Practice button in deck-view */
+  .gallery__practice-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    z-index: 9999;
+  }
+
+  /* Add bottom padding so content doesn't hide behind the bar */
+  .gallery__wrapping-row,
+  .gallery__header-row {
+    padding-bottom: 120px;
+  }
+
+  /* Hide the footer on mobile (matches Figma) */
+  .footer {
+    display: none;
+  }
+
+  /* Page modifier for screens without mobile bar */
+  .page_no-mobile-bar .gallery__new-card-btn,
+  .page_no-mobile-bar .gallery__practice-btn {
+    position: static;
+    width: 100%;
+    margin: 0;
+  }
+}

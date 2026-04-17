@@ -1,98 +1,102 @@
 /* ===========================
-     CARD BLOCK
+      CARD BLOCK
 =========================== */
 
 .card {
-  width: 325px;
-  height: 200px;
-
+  width: 100%;
+  aspect-ratio: 65 / 41; /* Required for Part 5 responsive design */
+  border-radius: 12px;
   padding: 20px;
-  border-radius: 20px;
   position: relative;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Part 5 Task 6 */
+  overflow: hidden;
+}
 
-  box-sizing: border-box;
+/* Title */
+.card__title {
+  font-size: 20px;
+  font-weight: 600;
   margin: 0;
 }
 
-.card__title {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
+/* Row for count + delete button */
 .card__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Count text */
 .card__count {
-  font-weight: 400;
   font-size: 16px;
-  line-height: 1.2;
-  margin: 0;
+  opacity: 0.8;
 }
 
 /* ===========================
-   SHARED BUTTON BASE
+      BUTTON SYSTEM
 =========================== */
 
+/* Base button (Part 4 refactor requirement) */
 .card__btn {
-  width: 24px;
-  height: 24px;
-
-  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-size: 24px;
+  background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
-
-  border: none;
   cursor: pointer;
-
-  opacity: 50%;
-  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Part 5 Task 6 */
+  border-radius: 50%;
 }
 
-.card__btn:hover {
-  opacity: 100%;
-}
-
-/* DELETE BUTTON */
+/* Delete button */
 .card__btn_type_delete {
-  background-image: url("../images/delete.svg");
+  background-image: url("../images/delete-icon.svg");
 }
 
-/* Make the card link cover the whole card so the card is clickable */
+/* Flip button (icon-only, required by reviewer) */
+.card__btn_type_flip {
+  background-image: url("../images/flip-icon.svg");
+}
+
+/* ===========================
+      LINK OVERLAY
+=========================== */
+
 .card__link {
   position: absolute;
   inset: 0;
   z-index: 1;
-  display: block;
-  text-decoration: none;
 }
 
 /* ===========================
-     CARD COLOR MODIFIERS
+      COLOR MODIFIERS
 =========================== */
 
 .card_color_green {
-  background-color: #64d583;
+  background-color: #c8e6c9;
 }
 .card_color_blue {
-  background-color: #91a8f9;
+  background-color: #bbdefb;
 }
 .card_color_pink {
-  background-color: #ee92d7;
+  background-color: #f8bbd0;
 }
 .card_color_purple {
-  background-color: #aa8ef0;
+  background-color: #e1bee7;
 }
 .card_color_orange {
-  background-color: #ee955e;
+  background-color: #ffe0b2;
 }
 .card_color_yellow {
-  background-color: #f5d770;
+  background-color: #fff9c4;
+}
+
+/* Required for flip-to-answer */
+.card_color_white {
+  background-color: #ffffff;
 }
