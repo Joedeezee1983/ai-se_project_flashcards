@@ -5,7 +5,7 @@ export const gallery = [
   {
     id: "card-1",
     name: "Biology Basics",
-    color: "#6ab04c",
+    color: "#64d583", // green
     cards: [
       {
         question: "What is a cell?",
@@ -17,7 +17,7 @@ export const gallery = [
   {
     id: "card-2",
     name: "JavaScript",
-    color: "#2f80ed",
+    color: "#91a8f9", // blue
     cards: [
       {
         question: "What is hoisting?",
@@ -36,7 +36,7 @@ export const gallery = [
   {
     id: "card-3",
     name: "CSS Selectors",
-    color: "#ff5b8a",
+    color: "#ee92d7", // pink
     cards: [
       { question: "Select by id?", answer: "Use #idName." },
       { question: "Select children?", answer: "> selector." },
