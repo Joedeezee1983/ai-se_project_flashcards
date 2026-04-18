@@ -32,6 +32,7 @@
   border-radius: 20px;
   padding: 20px;
   box-sizing: border-box;
+  overflow: hidden;
 
   display: flex;
   justify-content: center;
@@ -43,8 +44,10 @@
 .carousel__card-text {
   margin: 0;
   font-weight: 700;
-  font-size: 32px;
+  font-size: clamp(16px, 3.5vw, 32px);
   text-align: center;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* ===========================
