@@ -3,12 +3,14 @@ import {
   hexToString,
   cardColorModifierFromHex,
   removeColorClasses,
-} from "./colors.js";
+} from "./colorMap.js";
 
-import { gallery, getGalleryByID } from "./gallery.js";
+import { gallery, getGalleryByID } from "./decks.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
 import { openModal } from "./modal.js";
+
+const CLICK_ANIMATION_MS = 300;
 
 // ===============================
 // SELECTORS (UPDATED TO MATCH HTML)
@@ -66,7 +68,7 @@ function createDeckCardEl(deckData) {
 // The last <li> in decksList is the "+ New Deck" button
 const newDeckBtnLi = decksList
   ?.querySelector(".gallery__new-card-btn")
-  ?.closest("li");
+  ?.closest(".gallery__new-card-item");
 
 function renderDeckCard(deckData) {
   const el = createDeckCardEl(deckData);
@@ -99,7 +101,7 @@ document.querySelectorAll(".gallery__new-card-btn").forEach((btn) => {
     btn.classList.add("gallery__new-card-btn_clicked");
     setTimeout(
       () => btn.classList.remove("gallery__new-card-btn_clicked"),
-      300,
+      CLICK_ANIMATION_MS,
     );
   });
 });

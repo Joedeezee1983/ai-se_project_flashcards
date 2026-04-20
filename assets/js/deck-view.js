@@ -1,7 +1,7 @@
 // deck-view.js
 // Responsible for rendering the deck (card group) view and its flashcards.
 
-import { hexToString, removeColorClasses } from "./colors.js";
+import { hexToString, removeColorClasses } from "./colorMap.js";
 import { openModal } from "./modal.js";
 
 export function createFlashcardEl(flashcardData, deckColorName) {
@@ -70,7 +70,7 @@ export function renderDeckView(deck) {
   const headerTitle = deckView?.querySelector(".gallery__title");
   const newCardBtnLi = cardsList
     ?.querySelector(".gallery__new-card-btn")
-    ?.closest("li");
+    ?.closest(".gallery__new-card-item");
 
   if (headerTitle) headerTitle.textContent = deck.name;
 

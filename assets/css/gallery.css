@@ -106,6 +106,10 @@
 =========================== */
 
 @media screen and (max-width: 480px) {
+  .gallery__new-card-item {
+    display: none;
+  }
+
   .gallery__new-card-btn {
     position: fixed;
     bottom: 20px;
@@ -115,18 +119,16 @@
     margin: 0 auto;
     z-index: 9999;
     min-height: auto;
+    padding: 16px;
     border-radius: 12px;
     background-color: #1a1a1a;
     color: #ffffff;
-  }
-
-  .gallery__new-card-btn-wrapper {
-    display: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   .gallery__practice-btn {
     position: fixed;
-    bottom: 84px;
+    bottom: 20px;
     left: 0;
     right: 0;
     width: calc(100% - 40px);
@@ -134,8 +136,20 @@
     z-index: 9999;
   }
 
-  .gallery__wrapping-row,
-  .gallery__header-row {
-    padding-bottom: 160px;
+  .deck-view .gallery__new-card-btn {
+    bottom: 20px;
+  }
+
+  .deck-view .gallery__practice-btn {
+    bottom: 76px;
+  }
+
+  .gallery__wrapping-row {
+    padding-bottom: 80px;
+  }
+
+  .deck-view .gallery__wrapping-row,
+  .deck-view .gallery__header-row {
+    padding-bottom: 140px;
   }
 }

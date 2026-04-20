@@ -1,5 +1,5 @@
-// gallery.js
-// Minimal gallery data and helper for the project (renamed from decks.js).
+// decks.js
+// Deck data and helper for the project.
 
 export const gallery = [
   {
@@ -47,4 +47,3 @@ export const gallery = [
 export function getGalleryByID(id) {
   return gallery.find((d) => d.id === id) || null;
 }
-export default gallery;

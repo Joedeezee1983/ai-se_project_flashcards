@@ -1,4 +1,4 @@
-// colors.js
+// colorMap.js
 // Utilities for mapping hex colors to modifier names and cleaning color classes.
 
 export const HEX_TO_NAME = {
@@ -34,5 +34,3 @@ export function removeColorClasses(el) {
 export function cardColorModifierFromHex(hex) {
   return `card_color_${hexToString(hex)}`;
 }
-
-export default { hexToString, removeColorClasses, cardColorModifierFromHex };

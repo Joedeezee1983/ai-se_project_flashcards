@@ -1,4 +1,4 @@
-import { hexToString, removeColorClasses } from "./colors.js";
+import { hexToString, removeColorClasses } from "./colorMap.js";
 
 export function renderCarouselView(cardGroup) {
   let currentIndex = 0;
