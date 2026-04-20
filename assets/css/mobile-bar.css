@@ -1,1 +1,17 @@
-/* Mobile bottom bar styles are defined in gallery.css — no rules here. */
+/* ===========================
+   MOBILE BOTTOM BAR GRADIENT
+=========================== */
+
+@media screen and (max-width: 480px) {
+  .page_has-bottom-bar::after {
+    content: "";
+    position: fixed;
+    bottom: 72px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, #f5f5f5);
+    pointer-events: none;
+    z-index: 9998;
+  }
+}

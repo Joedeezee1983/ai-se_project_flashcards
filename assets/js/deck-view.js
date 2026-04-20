@@ -68,17 +68,28 @@ export function renderDeckView(deck) {
   const cardsList = document.getElementById("cardsList");
   const deckView = document.getElementById("deck-view");
   const headerTitle = deckView?.querySelector(".gallery__title");
+  const newCardBtnLi = cardsList
+    ?.querySelector(".gallery__new-card-btn")
+    ?.closest("li");
 
   if (headerTitle) headerTitle.textContent = deck.name;
 
   if (!cardsList) return;
-  cardsList.innerHTML = "";
+
+  // Remove only card elements, preserve the "+ New Card" button <li>
+  [...cardsList.querySelectorAll(".card")].forEach((el) => el.remove());
 
   // Convert deck.color hex → string name (e.g., "green")
   const deckColorName = hexToString(deck.color);
 
   deck.cards.forEach((card) => {
     const el = createFlashcardEl(card, deckColorName);
-    if (el) cardsList.append(el);
+    if (el) {
+      if (newCardBtnLi) {
+        cardsList.insertBefore(el, newCardBtnLi);
+      } else {
+        cardsList.append(el);
+      }
+    }
   });
 }

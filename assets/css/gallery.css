@@ -55,15 +55,19 @@
 =========================== */
 
 .gallery__new-card-btn {
-  width: 100%;
-  padding: 16px;
+  min-height: 168px;
+  padding: 20px;
   font-size: 18px;
   font-weight: 700;
   border: none;
-  border-radius: 12px;
-  background-color: #1a1a1a;
-  color: #ffffff;
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  color: #888888;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .gallery__new-card-btn:hover {
@@ -102,10 +106,27 @@
 =========================== */
 
 @media screen and (max-width: 480px) {
-  .gallery__new-card-btn,
-  .gallery__practice-btn {
+  .gallery__new-card-btn {
     position: fixed;
     bottom: 20px;
+    left: 0;
+    right: 0;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    z-index: 9999;
+    min-height: auto;
+    border-radius: 12px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+
+  .gallery__new-card-btn-wrapper {
+    display: none;
+  }
+
+  .gallery__practice-btn {
+    position: fixed;
+    bottom: 84px;
     left: 0;
     right: 0;
     width: calc(100% - 40px);
@@ -115,17 +136,6 @@
 
   .gallery__wrapping-row,
   .gallery__header-row {
-    padding-bottom: 120px; /* prevent overlap */
-  }
-
-  .footer {
-    display: none; /* matches Figma */
-  }
-
-  .page_no-mobile-bar .gallery__new-card-btn,
-  .page_no-mobile-bar .gallery__practice-btn {
-    position: static;
-    width: 100%;
-    margin: 0;
+    padding-bottom: 160px;
   }
 }

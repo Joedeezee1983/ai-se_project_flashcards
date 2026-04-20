@@ -63,9 +63,20 @@ function createDeckCardEl(deckData) {
   return clone;
 }
 
+// The last <li> in decksList is the "+ New Deck" button
+const newDeckBtnLi = decksList
+  ?.querySelector(".gallery__new-card-btn")
+  ?.closest("li");
+
 function renderDeckCard(deckData) {
   const el = createDeckCardEl(deckData);
-  if (el && decksList) decksList.append(el);
+  if (el && decksList) {
+    if (newDeckBtnLi) {
+      decksList.insertBefore(el, newDeckBtnLi);
+    } else {
+      decksList.append(el);
+    }
+  }
 }
 
 // ===============================
@@ -137,11 +148,13 @@ function handleHashChange() {
   carousel.style.display = "none";
   notfound.style.display = "none";
   mainEl.classList.remove("page__main-content_carousel");
+  document.body.classList.remove("page_has-bottom-bar");
 
   // HOME
   if (!hash || hash === "home") {
     currentDeck = null;
     home.style.display = "block";
+    document.body.classList.add("page_has-bottom-bar");
     return;
   }
 
@@ -169,6 +182,7 @@ function handleHashChange() {
     if (deck) {
       currentDeck = deck;
       deckView.style.display = "block";
+      document.body.classList.add("page_has-bottom-bar");
       renderDeckView(deck);
       return;
     }

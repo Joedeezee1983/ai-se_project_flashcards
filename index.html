@@ -14,100 +14,109 @@
   </head>
 
   <body class="page">
-    <header class="header">
-      <h1 class="header__title">Flash Cards</h1>
+    <div class="page__container">
+      <header class="header">
+        <h1 class="header__title">Flash Cards</h1>
 
-      <nav class="nav">
-        <ul class="nav__links">
-          <li><a class="nav__link" href="#home">Home</a></li>
-          <li>
-            <a class="nav__link" href="#home" aria-label="View my decks"
-              >My Decks</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+        <nav class="nav">
+          <ul class="nav__links">
+            <li><a class="nav__link" href="#home">My Decks</a></li>
+            <li>
+              <a class="nav__link" href="#home" aria-label="About the app"
+                >About</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-    <main id="main" class="page__main-content" aria-live="polite">
-      <!-- ===========================
+      <main id="main" class="page__main-content" aria-live="polite">
+        <!-- ===========================
            HOME / GALLERY SECTION
       ============================ -->
-      <section id="home" class="gallery">
-        <h2 class="gallery__title">Your Decks</h2>
+        <section id="home" class="gallery">
+          <h2 class="gallery__title">My Decks</h2>
 
-        <div class="gallery__wrapping-row">
-          <button class="gallery__new-card-btn" type="button">
-            + New Deck
-          </button>
+          <div class="gallery__wrapping-row">
+            <ul id="decksList" class="gallery__list">
+              <li>
+                <button class="gallery__new-card-btn" type="button">
+                  + New Deck
+                </button>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-          <ul id="decksList" class="gallery__list"></ul>
-        </div>
-      </section>
-
-      <!-- ===========================
+        <!-- ===========================
            DECK VIEW SECTION
       ============================ -->
-      <section id="deck-view" class="deck-view">
-        <div class="gallery__header-row">
-          <h2 class="gallery__title"></h2>
+        <section id="deck-view" class="deck-view">
+          <div class="gallery__header-row">
+            <h2 class="gallery__title"></h2>
 
-          <button class="gallery__practice-btn" type="button">Practice</button>
-        </div>
+            <button class="gallery__practice-btn" type="button">
+              Practice
+            </button>
+          </div>
 
-        <div class="gallery__wrapping-row">
-          <button class="gallery__new-card-btn" type="button">
-            + New Card
-          </button>
+          <div class="gallery__wrapping-row">
+            <ul id="cardsList" class="gallery__list">
+              <li>
+                <button class="gallery__new-card-btn" type="button">
+                  + New Card
+                </button>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-          <ul id="cardsList" class="gallery__list"></ul>
-        </div>
-      </section>
-
-      <!-- ===========================
+        <!-- ===========================
            CAROUSEL SECTION
       ============================ -->
-      <section id="carousel" class="carousel">
-        <h2 class="carousel__title"></h2>
+        <section id="carousel" class="carousel">
+          <h2 class="carousel__title"></h2>
 
-        <div class="carousel__row">
-          <button
-            class="carousel__btn carousel__btn_type_left"
-            type="button"
-            aria-label="Previous card"
-            disabled
-          ></button>
+          <div class="carousel__row">
+            <button
+              class="carousel__btn carousel__btn_type_left"
+              type="button"
+              aria-label="Previous card"
+              disabled
+            ></button>
 
-          <div class="carousel__card">
-            <p class="carousel__card-text"></p>
+            <div class="carousel__card">
+              <p class="carousel__card-text"></p>
+            </div>
+
+            <button
+              class="carousel__btn carousel__btn_type_right"
+              type="button"
+              aria-label="Next card"
+            ></button>
           </div>
 
           <button
-            class="carousel__btn carousel__btn_type_right"
+            class="carousel__btn carousel__btn_type_flip"
             type="button"
-            aria-label="Next card"
+            aria-label="Flip card"
           ></button>
-        </div>
+        </section>
 
-        <button
-          class="carousel__btn carousel__btn_type_flip"
-          type="button"
-          aria-label="Flip card"
-        ></button>
-      </section>
-
-      <!-- ===========================
+        <!-- ===========================
            404 SECTION
       ============================ -->
-      <section id="not-found" class="not-found">
-        <h2>404 — Not Found</h2>
-        <p>The page you requested could not be found.</p>
-      </section>
-    </main>
+        <section id="not-found" class="not-found">
+          <h2>404 — Not Found</h2>
+          <p>The page you requested could not be found.</p>
+        </section>
+      </main>
 
-    <footer class="footer">
-      <p class="footer__text">&copy; 2026 Flash Cards App</p>
-    </footer>
+      <footer class="footer">
+        <p class="footer__text">&copy; 2026 Flash Cards App</p>
+      </footer>
+    </div>
+    <!-- /.page__container -->
 
     <!-- ===========================
          TEMPLATES
