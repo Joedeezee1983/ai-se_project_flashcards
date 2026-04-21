@@ -166,7 +166,7 @@ function handleHashChange() {
     const deck = getGalleryByID(id);
 
     if (deck) {
-      carousel.style.display = "block";
+      carousel.style.display = "flex";
       mainEl.classList.add("page__main-content_carousel");
       renderCarouselView(deck);
       return;

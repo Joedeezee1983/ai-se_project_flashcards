@@ -9,7 +9,7 @@
 .gallery__title {
   margin: 0;
   font-weight: 900;
-  font-size: 24px;
+  font-size: 32px;
   letter-spacing: -0.24px;
 }
 
@@ -19,6 +19,7 @@
 =========================== */
 
 .gallery__wrapping-row {
+  padding-top: 24px;
   display: flex;
   flex-direction: column;
   gap: 24px; /* spacing between button and list */
@@ -33,7 +34,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
 }
 
 /* ===========================
@@ -56,6 +56,7 @@
 
 .gallery__new-card-btn {
   min-height: 168px;
+  width: 100%;
   padding: 20px;
   font-size: 18px;
   font-weight: 700;
@@ -106,13 +107,10 @@
 =========================== */
 
 @media screen and (max-width: 480px) {
-  .gallery__new-card-item {
-    display: none;
-  }
-
   .gallery__new-card-btn {
+    font-size: 18px;
     position: fixed;
-    bottom: 20px;
+    bottom: 76px;
     left: 0;
     right: 0;
     width: calc(100% - 40px);
@@ -129,15 +127,19 @@
   .gallery__practice-btn {
     position: fixed;
     bottom: 20px;
-    left: 0;
-    right: 0;
-    width: calc(100% - 40px);
+    right: 20px;
+    width: calc(100% - 250px);
     margin: 0 auto;
     z-index: 9999;
+    font-size: 18px;
+    padding: 16px;
   }
 
   .deck-view .gallery__new-card-btn {
-    bottom: 20px;
+    bottom: 76px;
+    left: 20px;
+    width: calc(100% - 250px);
+    right: unset;
   }
 
   .deck-view .gallery__practice-btn {
@@ -146,10 +148,5 @@
 
   .gallery__wrapping-row {
     padding-bottom: 80px;
-  }
-
-  .deck-view .gallery__wrapping-row,
-  .deck-view .gallery__header-row {
-    padding-bottom: 140px;
   }
 }
