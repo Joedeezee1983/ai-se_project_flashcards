@@ -106,6 +106,14 @@ document.querySelectorAll(".gallery__new-card-btn").forEach((btn) => {
   });
 });
 
+const homeNewDeckBtn = document.querySelector("#home .gallery__new-card-btn");
+
+if (homeNewDeckBtn) {
+  homeNewDeckBtn.addEventListener("click", () => {
+    location.hash = "new-deck";
+  });
+}
+
 // ===============================
 // DELEGATED CLICK HANDLER FOR DECK LINKS
 // ===============================
@@ -139,6 +147,7 @@ function handleHashChange() {
   const hash = location.hash.replace(/^#/, "");
 
   const home = document.getElementById("home");
+  const newDeckView = document.getElementById("new-deck-view");
   const deckView = document.getElementById("deck-view");
   const carousel = document.getElementById("carousel");
   const notfound = document.getElementById("not-found");
@@ -146,6 +155,7 @@ function handleHashChange() {
 
   // Hide everything by default
   home.style.display = "none";
+  newDeckView.style.display = "none";
   deckView.style.display = "none";
   carousel.style.display = "none";
   notfound.style.display = "none";
@@ -157,6 +167,13 @@ function handleHashChange() {
     currentDeck = null;
     home.style.display = "block";
     document.body.classList.add("page_has-bottom-bar");
+    return;
+  }
+
+  // NEW DECK VIEW
+  if (hash === "new-deck" || hash === "new-deck-view") {
+    currentDeck = null;
+    newDeckView.style.display = "block";
     return;
   }
 

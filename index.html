@@ -51,6 +51,122 @@
       </section>
 
       <!-- ===========================
+           NEW DECK VIEW SECTION
+      ============================ -->
+      <section class="new-deck-view" id="new-deck-view">
+        <h2 class="new-deck-view__title">New Deck</h2>
+
+        <form class="new-deck-view__form" id="new-deck-form">
+          <fieldset class="new-deck-view__color-picker">
+            <legend class="new-deck-view__color-legend">
+              Pick the deck color
+            </legend>
+
+            <div class="new-deck-view__color-options">
+              <input
+                class="new-deck-view__color-input"
+                type="radio"
+                name="deck-color"
+                id="deck-color-green"
+                value="#64d583"
+                aria-label="green"
+                checked
+              />
+              <label
+                class="new-deck-view__color-swatch new-deck-view__color-swatch_color_green"
+                for="deck-color-green"
+              ></label>
+
+              <input
+                class="new-deck-view__color-input"
+                type="radio"
+                name="deck-color"
+                id="deck-color-blue"
+                value="#91a8f9"
+                aria-label="blue"
+              />
+              <label
+                class="new-deck-view__color-swatch new-deck-view__color-swatch_color_blue"
+                for="deck-color-blue"
+              ></label>
+
+              <input
+                class="new-deck-view__color-input"
+                type="radio"
+                name="deck-color"
+                id="deck-color-pink"
+                value="#ee92d7"
+                aria-label="pink"
+              />
+              <label
+                class="new-deck-view__color-swatch new-deck-view__color-swatch_color_pink"
+                for="deck-color-pink"
+              ></label>
+
+              <input
+                class="new-deck-view__color-input"
+                type="radio"
+                name="deck-color"
+                id="deck-color-purple"
+                value="#aa8ef0"
+                aria-label="purple"
+              />
+              <label
+                class="new-deck-view__color-swatch new-deck-view__color-swatch_color_purple"
+                for="deck-color-purple"
+              ></label>
+
+              <input
+                class="new-deck-view__color-input"
+                type="radio"
+                name="deck-color"
+                id="deck-color-orange"
+                value="#ee955e"
+                aria-label="orange"
+              />
+              <label
+                class="new-deck-view__color-swatch new-deck-view__color-swatch_color_orange"
+                for="deck-color-orange"
+              ></label>
+
+              <input
+                class="new-deck-view__color-input"
+                type="radio"
+                name="deck-color"
+                id="deck-color-yellow"
+                value="#f5d770"
+                aria-label="yellow"
+              />
+              <label
+                class="new-deck-view__color-swatch new-deck-view__color-swatch_color_yellow"
+                for="deck-color-yellow"
+              ></label>
+            </div>
+          </fieldset>
+
+          <label class="new-deck-view__text-label" for="new-deck-json">
+            Write the JSON array of cards so that it matches this schema
+            <textarea
+              class="new-deck-view__textarea"
+              id="new-deck-json"
+              name="cards-json"
+              placeholder='[{"question":"...","answer":"..."}]'
+              rows="10"
+            ></textarea>
+          </label>
+
+          <button
+            class="new-deck-view__submit-btn"
+            type="submit"
+            id="new-deck-submit"
+            disabled
+          >
+            Create the Deck
+          </button>
+        </form>
+      </section>
+
+      <!-- ===========================
            DECK VIEW SECTION
       ============================ -->
       <section id="deck-view" class="deck-view">
