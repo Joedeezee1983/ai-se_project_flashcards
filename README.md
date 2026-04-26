@@ -138,6 +138,11 @@ Open index.html in any modern browser
 
 No additional setup required
 
+🧪 Automated Tests Entry Point
+For platform/instructor automated checks, this repository includes a root-level run.sh script.
+The test harness expects ./run.sh from the repository root.
+This script starts a static server at http://127.0.0.1:8000 by default.
+
 🔮 Future Improvements
 Add multiple decks with category selection
 
