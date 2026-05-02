@@ -15,6 +15,12 @@
   align-items: center;
 }
 
+.modal_visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .modal__overlay {
   position: absolute;
   inset: 0;
@@ -38,6 +44,13 @@
   margin: 0;
   font-size: 16px;
   font-weight: 400;
+}
+
+.modal__error {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #b00020;
 }
 
 .modal__actions {
