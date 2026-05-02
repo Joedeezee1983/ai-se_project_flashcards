@@ -8,6 +8,7 @@ import {
 import { gallery, getGalleryByID } from "./decks.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
+import { disableSubmitBtn } from "./new-deck-view.js";
 import { openModal } from "./modal.js";
 
 const CLICK_ANIMATION_MS = 300;
@@ -174,6 +175,7 @@ function handleHashChange() {
   if (hash === "new-deck" || hash === "new-deck-view") {
     currentDeck = null;
     newDeckView.style.display = "block";
+    disableSubmitBtn();
     return;
   }
 
