@@ -8,6 +8,11 @@ const overlay = modal?.querySelector(".modal__overlay");
 
 let _resolveFn = null;
 
+/**
+ * Opens the confirmation modal and resolves to true/false based on user choice.
+ *
+ * @returns {Promise<boolean>} User confirmation result.
+ */
 function openModal() {
   if (!modal) return Promise.resolve(false);
   modal.classList.add("modal_open");
@@ -17,6 +22,11 @@ function openModal() {
   });
 }
 
+/**
+ * Closes the confirmation modal and resolves the pending modal promise.
+ *
+ * @param {boolean} result - Confirmation result to resolve with.
+ */
 function closeModal(result) {
   if (!modal) return;
   modal.classList.remove("modal_open");

@@ -74,6 +74,43 @@
   background-image: url("../images/flip.svg");
 }
 
+.card__btn_type_edit {
+  background-image: url("../images/edit.svg");
+}
+
+.card__btn_type_check {
+  background-image: url("../images/check.svg");
+}
+
+.card__editor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.card__editor-input {
+  width: 100%;
+  min-height: 56px;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+}
+
+.card__editor-input:focus {
+  outline: 2px solid rgba(26, 26, 26, 0.24);
+}
+
+.card__editor-input_hidden {
+  display: none;
+}
+
+.card__row_editor {
+  margin-top: auto;
+}
+
 /* ===========================
    COLOR MODIFIERS
 =========================== */

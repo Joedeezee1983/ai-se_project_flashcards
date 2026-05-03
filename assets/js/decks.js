@@ -1,49 +1,26 @@
 // decks.js
-// Deck data and helper for the project.
+// API-fetched deck cache and helpers.
 
-export const gallery = [
-  {
-    id: "card-1",
-    name: "Biology Basics",
-    color: "#64d583", // green
-    cards: [
-      {
-        question: "What is a cell?",
-        answer: "The basic structural unit of life.",
-      },
-      { question: "What carries genetic information?", answer: "DNA." },
-    ],
-  },
-  {
-    id: "card-2",
-    name: "JavaScript",
-    color: "#91a8f9", // blue
-    cards: [
-      {
-        question: "What is hoisting?",
-        answer: "JavaScript's behavior of moving declarations to the top.",
-      },
-      {
-        question: "What is a closure?",
-        answer: "A function with access to its outer scope.",
-      },
-      {
-        question: "Array method to map values?",
-        answer: "Array.prototype.map()",
-      },
-    ],
-  },
-  {
-    id: "card-3",
-    name: "CSS Selectors",
-    color: "#ee92d7", // pink
-    cards: [
-      { question: "Select by id?", answer: "Use #idName." },
-      { question: "Select children?", answer: "> selector." },
-    ],
-  },
-];
+export const fetchedDecks = [];
 
-export function getGalleryByID(id) {
-  return gallery.find((d) => d.id === id) || null;
+/**
+ * Returns a deck from the in-memory cache by its database id.
+ *
+ * @param {string} deckId - The deck _id.
+ * @returns {Object|null} Matching deck or null.
+ */
+export function getDeckByID(deckId) {
+  return fetchedDecks.find((deck) => deck._id === deckId) || null;
+}
+
+/**
+ * Removes a deck from the in-memory cache by id.
+ *
+ * @param {string} deckId - The deck _id.
+ */
+export function removeDeckByID(deckId) {
+  const index = fetchedDecks.findIndex((deck) => deck._id === deckId);
+  if (index !== -1) {
+    fetchedDecks.splice(index, 1);
+  }
 }

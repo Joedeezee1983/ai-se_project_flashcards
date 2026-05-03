@@ -1,14 +1,11 @@
 // Main entry for the app
-import {
-  hexToString,
-  cardColorModifierFromHex,
-  removeColorClasses,
-} from "./colorMap.js";
+import { cardColorModifierFromHex } from "./colorMap.js";
 
-import { gallery, getGalleryByID } from "./decks.js";
+import { deleteDeck, getDecks } from "./api.js";
+import { fetchedDecks, getDeckByID, removeDeckByID } from "./decks.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
-import { disableSubmitBtn } from "./new-deck-view.js";
+import { disableSubmitBtn, showError } from "./new-deck-view.js";
 import { openModal } from "./modal.js";
 
 const CLICK_ANIMATION_MS = 300;
@@ -31,6 +28,12 @@ let currentDeck = null;
 // ===============================
 // CREATE DECK CARD (HOME VIEW)
 // ===============================
+/**
+ * Creates a home-view deck card element from template data.
+ *
+ * @param {{_id: string, name: string, color: string, cards: Array}} deckData - Deck object.
+ * @returns {HTMLLIElement|null} Render-ready list item or null.
+ */
 function createDeckCardEl(deckData) {
   if (!deckTemplate) return null;
 
@@ -50,17 +53,21 @@ function createDeckCardEl(deckData) {
   clone.classList.add(colorMod);
 
   // Link to deck-view
-  if (link) link.href = `#gallery/${deckData.id}`;
+  if (link) link.href = `#deck/${deckData._id}`;
 
-  // Delete button — confirm then remove from DOM and gallery array
+  // Delete button — confirm, delete from API, then remove from DOM/cache
   deleteBtn.addEventListener("click", async (e) => {
     e.stopPropagation();
     const confirmed = await openModal();
     if (!confirmed) return;
-    const li = deleteBtn.closest(".card");
-    if (li && li.parentNode) li.parentNode.removeChild(li);
-    const idx = gallery.findIndex((d) => d.id === deckData.id);
-    if (idx !== -1) gallery.splice(idx, 1);
+
+    deleteDeck(deckData._id)
+      .then(() => {
+        const li = deleteBtn.closest(".card");
+        if (li && li.parentNode) li.parentNode.removeChild(li);
+        removeDeckByID(deckData._id);
+      })
+      .catch(showError);
   });
 
   return clone;
@@ -71,6 +78,11 @@ const newDeckBtnLi = decksList
   ?.querySelector(".gallery__new-card-btn")
   ?.closest(".gallery__new-card-item");
 
+/**
+ * Renders a single deck card in the home list.
+ *
+ * @param {Object} deckData - Deck data.
+ */
 function renderDeckCard(deckData) {
   const el = createDeckCardEl(deckData);
   if (el && decksList) {
@@ -82,17 +94,28 @@ function renderDeckCard(deckData) {
   }
 }
 
+/**
+ * Clears rendered deck cards while preserving the new deck button list item.
+ */
+function clearDeckCards() {
+  if (!decksList) return;
+  [...decksList.querySelectorAll(".card")].forEach((el) => el.remove());
+}
+
+/**
+ * Renders the home view deck list from the fetched cache.
+ */
+function renderHomeView() {
+  clearDeckCards();
+  fetchedDecks.forEach(renderDeckCard);
+}
+
 // ===============================
 // CREATE FLASHCARD (DECK VIEW)
 // ===============================
 // Flashcard creation and deck-view rendering moved to `deck-view.js`.
 
 // Deck view rendering moved to `deck-view.js` (imported above).
-
-// ===============================
-// INITIAL RENDER OF HOME VIEW
-// ===============================
-gallery.forEach(renderDeckCard);
 
 // ===============================
 // NEW CARD BUTTON ANIMATION
@@ -137,17 +160,21 @@ const practiceBtn = document.querySelector(".gallery__practice-btn");
 if (practiceBtn) {
   practiceBtn.addEventListener("click", () => {
     if (!currentDeck) return;
-    location.hash = `carousel/${currentDeck.id}`;
+    location.hash = `carousel/${currentDeck._id}`;
   });
 }
 
 // ===============================
 // ROUTER
 // ===============================
-function handleHashChange() {
+/**
+ * Hash-based router that toggles visible app views.
+ */
+function router() {
   const hash = location.hash.replace(/^#/, "");
 
   const home = document.getElementById("home");
+  const about = document.getElementById("about");
   const newDeckView = document.getElementById("new-deck-view");
   const deckView = document.getElementById("deck-view");
   const carousel = document.getElementById("carousel");
@@ -156,6 +183,7 @@ function handleHashChange() {
 
   // Hide everything by default
   home.style.display = "none";
+  about.style.display = "none";
   newDeckView.style.display = "none";
   deckView.style.display = "none";
   carousel.style.display = "none";
@@ -167,7 +195,15 @@ function handleHashChange() {
   if (!hash || hash === "home") {
     currentDeck = null;
     home.style.display = "block";
+    renderHomeView();
     document.body.classList.add("page_has-bottom-bar");
+    return;
+  }
+
+  // ABOUT VIEW
+  if (hash === "about") {
+    currentDeck = null;
+    about.style.display = "block";
     return;
   }
 
@@ -182,7 +218,7 @@ function handleHashChange() {
   // CAROUSEL
   if (hash.startsWith("carousel/")) {
     const id = hash.split("/")[1];
-    const deck = getGalleryByID(id);
+    const deck = getDeckByID(id);
 
     if (deck) {
       carousel.style.display = "flex";
@@ -196,9 +232,9 @@ function handleHashChange() {
   }
 
   // DECK VIEW
-  if (hash.startsWith("gallery/")) {
+  if (hash.startsWith("deck/")) {
     const id = hash.split("/")[1];
-    const deck = getGalleryByID(id);
+    const deck = getDeckByID(id);
 
     if (deck) {
       currentDeck = deck;
@@ -216,5 +252,18 @@ function handleHashChange() {
   notfound.style.display = "block";
 }
 
-window.addEventListener("hashchange", handleHashChange);
-window.addEventListener("load", handleHashChange);
+window.addEventListener("hashchange", router);
+
+window.addEventListener("DOMContentLoaded", () => {
+  getDecks()
+    .then((decks) => {
+      fetchedDecks.push(...decks);
+      renderHomeView();
+    })
+    .catch(() => {
+      showError("Can't fetch decks");
+    })
+    .finally(() => {
+      router();
+    });
+});

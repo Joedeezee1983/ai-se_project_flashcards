@@ -1,9 +1,19 @@
 import { hexToString, removeColorClasses } from "./colorMap.js";
 
+/**
+ * Renders and wires the practice carousel for a deck.
+ *
+ * @param {{name: string, color: string, cards: Array<{question: string, answer: string}>}} cardGroup - Deck data.
+ */
 export function renderCarouselView(cardGroup) {
   let currentIndex = 0;
   let showingQuestion = true;
 
+  /**
+   * Builds the title text for the current card position.
+   *
+   * @returns {string} Carousel title text.
+   */
   function getCarouselTitle() {
     return `${cardGroup.name} · ${currentIndex + 1}/${cardGroup.cards.length}`;
   }
@@ -22,10 +32,16 @@ export function renderCarouselView(cardGroup) {
   // -----------------------------
   // INTERNAL UPDATE FUNCTIONS
   // -----------------------------
+  /**
+   * Updates the carousel title element.
+   */
   function updateTitle() {
     if (titleEl) titleEl.textContent = getCarouselTitle();
   }
 
+  /**
+   * Updates the card color based on side and deck color.
+   */
   function updateColor() {
     if (!cardEl) return;
 
@@ -39,6 +55,9 @@ export function renderCarouselView(cardGroup) {
     }
   }
 
+  /**
+   * Updates disabled styles and states for navigation buttons.
+   */
   function updateButtons() {
     if (!leftBtn || !rightBtn) return;
 
@@ -52,6 +71,9 @@ export function renderCarouselView(cardGroup) {
     rightBtn.classList.toggle("carousel__btn_disabled", atEnd);
   }
 
+  /**
+   * Re-renders card text and button states for the current index.
+   */
   function updateDisplay() {
     updateTitle();
     updateColor();
@@ -68,6 +90,13 @@ export function renderCarouselView(cardGroup) {
   // -----------------------------
   // REMOVE OLD LISTENERS SAFELY
   // -----------------------------
+  /**
+   * Clones and replaces a button to remove any existing event listeners.
+   *
+   * @template {Element} T
+   * @param {T|null} oldBtn - Existing button element.
+   * @returns {T|null} Fresh clone that replaced the original.
+   */
   function replaceBtn(oldBtn) {
     if (!oldBtn || !oldBtn.parentNode) return oldBtn;
     const newBtn = oldBtn.cloneNode(true);

@@ -1,4 +1,5 @@
-import { gallery } from "./decks.js";
+import { addDeck } from "./api.js";
+import { fetchedDecks } from "./decks.js";
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
@@ -8,22 +9,6 @@ const textareaEl = document.getElementById("new-deck-json");
 const errorModalEl = document.getElementById("error-modal");
 const errorModalCloseBtnEl = document.getElementById("error-modal-dismiss");
 const errorMessageEl = document.getElementById("error-modal-message");
-
-/**
- * Converts a string to a URL-safe slug: lowercase with any run of
- * non-alphanumeric characters replaced by a single hyphen, and no leading or
- * trailing hyphens.
- *
- * @param {string} str
- * @returns {string}
- */
-function slugify(str) {
-  return str
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 /**
  * Returns a consistent lowercase hex color string with a leading "#".
@@ -40,6 +25,12 @@ function normalizeColor(color) {
   return "#" + hex.toLowerCase();
 }
 
+/**
+ * Safely parses JSON and returns null for invalid JSON.
+ *
+ * @param {string} jsonString - JSON text from the form.
+ * @returns {Object|null} Parsed value or null when parsing fails.
+ */
 function parseJSON(jsonString) {
   try {
     return JSON.parse(jsonString);
@@ -48,6 +39,12 @@ function parseJSON(jsonString) {
   }
 }
 
+/**
+ * Validates the deck name according to project constraints.
+ *
+ * @param {unknown} name - Value to validate.
+ * @returns {string|null} Valid name as string or null.
+ */
 function validateName(name) {
   if (typeof name !== "string" || name.length < 2 || name.length > 80) {
     return null;
@@ -55,12 +52,20 @@ function validateName(name) {
   return name;
 }
 
-function showError(message) {
+/**
+ * Shows the shared error modal with a message.
+ *
+ * @param {string} message - Human-readable error text.
+ */
+export function showError(message) {
   if (!errorModalEl || !errorMessageEl) return;
   errorMessageEl.textContent = message;
   errorModalEl.classList.add("modal_visible");
 }
 
+/**
+ * Closes and clears the shared error modal.
+ */
 function closeErrorModal() {
   if (!errorModalEl || !errorMessageEl) return;
   errorModalEl.classList.remove("modal_visible");
@@ -71,6 +76,9 @@ if (errorModalCloseBtnEl) {
   errorModalCloseBtnEl.addEventListener("click", closeErrorModal);
 }
 
+/**
+ * Enables the new deck submit button when the form view is shown.
+ */
 export function disableSubmitBtn() {
   if (!submitBtn) return;
   submitBtn.disabled = false;
@@ -115,16 +123,16 @@ if (formEl && textareaEl) {
 
     const name = validName.trim();
     const cards = jsonData.cards;
-    const id = `${slugify(name)}-${Date.now()}`;
 
-    const deck = {
-      id,
-      color,
+    addDeck({
       name,
+      color,
       cards,
-    };
-
-    gallery.push(deck);
-    window.location.hash = `gallery/${id}`;
+    })
+      .then((newDeck) => {
+        fetchedDecks.push(newDeck);
+        window.location.hash = `deck/${newDeck._id}`;
+      })
+      .catch(showError);
   });
 }

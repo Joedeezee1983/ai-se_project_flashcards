@@ -11,14 +11,23 @@ export const HEX_TO_NAME = {
   "#ffffff": "white",
 };
 
-// Convert a hex value to a color name used in CSS modifiers
+/**
+ * Converts a hex color to its known modifier name.
+ *
+ * @param {string} hex - Hex color string.
+ * @returns {string} Known color name, defaulting to "green".
+ */
 export function hexToString(hex) {
   if (!hex) return "green";
   const lower = hex.toLowerCase();
   return HEX_TO_NAME[lower] || "green";
 }
 
-// Remove all color modifier classes from a card element
+/**
+ * Removes all BEM color modifier classes from an element.
+ *
+ * @param {Element|null} el - Element to clean.
+ */
 export function removeColorClasses(el) {
   if (!el || !el.classList) return;
 
@@ -30,7 +39,12 @@ export function removeColorClasses(el) {
   });
 }
 
-// Build a card color modifier class from a hex value
+/**
+ * Builds a card color class name from a hex color.
+ *
+ * @param {string} hex - Hex color string.
+ * @returns {string} Card color class name.
+ */
 export function cardColorModifierFromHex(hex) {
   return `card_color_${hexToString(hex)}`;
 }

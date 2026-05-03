@@ -24,7 +24,7 @@
         <ul class="nav__links">
           <li><a class="nav__link" href="#home">My Decks</a></li>
           <li>
-            <a class="nav__link" href="#home" aria-label="About the app"
+            <a class="nav__link" href="#about" aria-label="About the app"
               >About</a
             >
           </li>
@@ -220,6 +220,27 @@
       </section>
 
       <!-- ===========================
+           ABOUT SECTION
+      ============================ -->
+      <section id="about" class="about">
+        <h2 class="about__title">About</h2>
+        <p class="about__text">
+          Flash Cards persists your decks in a remote database through the
+          Sprint 4 API.
+        </p>
+        <pre class="about__pre"><code>{
+  "name": "Deck Name",
+  "color": "#64d583",
+  "cards": [
+    {
+      "question": "Question 1",
+      "answer": "Answer 1"
+    }
+  ]
+}</code></pre>
+      </section>
+
+      <!-- ===========================
            404 SECTION
       ============================ -->
       <section id="not-found" class="not-found">
@@ -261,6 +282,12 @@
             type="button"
             class="card__btn card__btn_type_flip"
             aria-label="Flip card"
+          ></button>
+
+          <button
+            type="button"
+            class="card__btn card__btn_type_edit"
+            aria-label="Edit card"
           ></button>
 
           <button
